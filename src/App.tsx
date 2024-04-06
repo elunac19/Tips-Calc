@@ -1,13 +1,15 @@
 import MenuItem from "./components/MenuItem"
 import OrderContent from "./components/OrderContent"
+import OrderTotals from "./components/OrderTotals"
+import TipForm from "./components/TipForm"
 import { menuItems } from "./data/db"
 import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const {order, addItem} = useOrder()
+  const {order, tip, setTip, addItem, clearItem} = useOrder()
 
-  return (
+  return ( 
     <>
       <header className='bg-amber-600 py-6'>
         <h1 className='text-center  text-orange-100 text-4xl font-black'>Consumption and Tips Calculator</h1>
@@ -31,6 +33,14 @@ function App() {
           <h2 className='text-center text-amber-600 font-extrabold text-3xl'>TICKET CONSUMPTION</h2>
           <OrderContent
             order={order}
+            clearItem={clearItem}
+          />
+          <TipForm
+            setTip={setTip}  
+          />
+          <OrderTotals
+            order={order}
+            tip={tip}
           />
         </div>
       </main>

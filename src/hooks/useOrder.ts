@@ -4,6 +4,7 @@ import type { Item, OrderItem} from "../types"
 export default function useOrder() {
 
     const [order, setOrder] = useState<OrderItem[]>([])
+    const [tip, setTip] = useState(0)
 
     function addItem(item : Item){
 
@@ -26,8 +27,15 @@ export default function useOrder() {
         }
     }
 
+    function clearItem(item : OrderItem){
+        setOrder(order.filter((orderItem) => orderItem.id !== item.id))
+    }
+
     return {
         order,
+        tip, 
+        setTip,
         addItem,
+        clearItem,
     }
 }
