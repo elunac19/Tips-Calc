@@ -31,11 +31,17 @@ export default function useOrder() {
         setOrder(order.filter((orderItem) => orderItem.id !== item.id))
     }
 
+    function placeOrder(){
+        setOrder([])
+        setTip(0)
+    }
+
     return {
         order,
         tip, 
         setTip,
         addItem,
         clearItem,
+        placeOrder
     }
 }

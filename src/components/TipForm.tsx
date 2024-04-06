@@ -20,22 +20,24 @@ const tipOptions = [
 
 type TipFormProps = {
     setTip : Dispatch<SetStateAction<number>>
+    tip : number 
 }
 
-const TipForm = ({setTip} : TipFormProps) => {
+const TipForm = ({setTip, tip} : TipFormProps) => {
     return (
         <div>
             <h3 className='font-black text-2xl'>Tip</h3>
             <form className='flex justify-between'>
-                {tipOptions.map((tip) => (
-                    <div key={tip.id} className='flex'>
-                        <label className='m-2 font-medium' htmlFor={tip.id}>{tip.label}</label>
+                {tipOptions.map((tipOpt) => (
+                    <div key={tipOpt.id} className='flex'>
+                        <label className='m-2 font-medium' htmlFor={tipOpt.id}>{tipOpt.label}</label>
                         <input 
-                            id={tip.id}
+                            id={tipOpt.id}
                             type="radio"
-                            name="tip"
-                            value={tip.value}
+                            name="tipOpt"
+                            value={tipOpt.value}
                             onChange={ e => setTip(+e.target.value)}
+                            checked={tipOpt.value === tip}
                         />
                     </div>
                 ))}
